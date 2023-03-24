@@ -37,6 +37,8 @@ import random
 import os
 import glob
 
+import pandas as pd
+
 
 
 gdf = pd.read_csv('/content/gdrive/MyDrive/Non_Trads_FOI/data/full_svi/gdf.csv')

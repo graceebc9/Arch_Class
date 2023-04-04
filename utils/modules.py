@@ -24,6 +24,7 @@ from torchvision import transforms
 from torchmetrics.classification import Accuracy, Recall
 from torchmetrics import Precision, JaccardIndex, ConfusionMatrix
 from torch.nn import  NLLLoss
+import seaborn as sn 
 
 from torch.utils.data import Dataset, DataLoader, SubsetRandomSampler
 import matplotlib.pyplot as plt

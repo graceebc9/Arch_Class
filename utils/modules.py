@@ -23,7 +23,7 @@ from typing import Optional
 from torchvision import transforms
 
 from torch.utils.data import Dataset, DataLoader, SubsetRandomSampler
-
+import matplotlib.pyplot as plt
 
 torch.manual_seed(17)
 

@@ -21,6 +21,9 @@ import torch.nn.functional as F
 from torch.autograd import Variable
 from typing import Optional
 from torchvision import transforms
+from torchmetrics.classification import Accuracy, Recall
+from torchmetrics import Precision, JaccardIndex, ConfusionMatrix
+from torch.nn import  NLLLoss
 
 from torch.utils.data import Dataset, DataLoader, SubsetRandomSampler
 import matplotlib.pyplot as plt

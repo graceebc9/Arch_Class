@@ -56,6 +56,8 @@ gdf.drop(columns=['Unnamed: 0'], inplace=True)
 
 
 
+
+
 class TransferLearning(pl.LightningModule):
     """
         Transfer learning data modules, works for ResNet Architectures 
@@ -97,6 +99,7 @@ class TransferLearning(pl.LightningModule):
             representations = self.feature_extractor(x).flatten(1)
         x = self.classifier(representations)
         return x
+
     def training_step(self, batch, batch_idx):
         x, y = batch
         logits = self(x)
@@ -131,7 +134,7 @@ class TransferLearning(pl.LightningModule):
         precision = self.prec(preds, y)
         jac = self.jacq_ind(preds, y)
         self.confmat.update(preds, y)
-        print(acc, recall, precision )
+        
         
 
         self.log('val_loss', loss, prog_bar=True)
@@ -187,6 +190,13 @@ class TransferLearning(pl.LightningModule):
         # self.log('test_conf', confmat, on_step=False, on_epoch=True, logger=True)
 
         return loss
+
+    def predict_step(self, batch, batch_idx, dataloader_idx=0):
+        x = batch
+        logits = self(x)
+        preds = torch.argmax(logits, dim=1) 
+        return preds, x
+
     def configure_optimizers(self,):
         print('Optimise with {}'.format(self.optimiser) )
         # optimizer = self.optimiser_dict[self.optimiser](self.parameters(), lr=self.learning_rate)
@@ -205,7 +215,6 @@ class TransferLearning(pl.LightningModule):
 
         return optimiser
 
-    
     
     
     

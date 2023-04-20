@@ -1,9 +1,9 @@
-from .modules import SVI_module, StreetViewData, SVI_Resnet
+from .modules import MyDataModule, StreetViewData, TransferLearning
 
 __all__ = (
     
-    "SVI_module"
+    "MyDataModule"
     ,"StreetViewData"
-    ,"SVI_Resnet"
+    ,"TransferLearning"
     
 )
